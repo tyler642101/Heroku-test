@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Room</title>
+    <script src="https://kit.fontawesome.com/72ae810c7a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="stylesheet.css">
+    <script>
+      function openSlideMenu() {
+        document.getElementById('menu').style.width='250px';
+        document.getElementById('content').style.marginLeft='250px';
+      }
+      function closeSlideMenu() {
+        document.getElementById('menu').style.width='0px';
+        document.getElementById('content').style.marginLeft='0px';
+      }
+      var i = 0;
+      function move() {
+        if (i == 0) {
+          i = 1;
+          var elem = document.getElementById("myBar");
+          var width = 1;
+          var id = setInterval(frame, 10);
+          function frame() {
+            if (width >= 100) {
+              clearInterval(id);
+              i = 0;
+            } else {
+              width++;
+              elem.style.width = width + "%";
+            }
+          }
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div id="content">
+      <span class="slide">
+        <a href="#" onclick="openSlideMenu()">
+          <i class="fas fa-bars fa-2x"></i>
+        </a>
+      </span>
+      <div id="menu" class="nav">
+        <a href="#" class="close" onclick="closeSlideMenu()">
+          <i class="fas fa-times"></i>
+        </a>
+        <li><a href="#">Home</a></li>
+      </div>
+      <div class="room-title">
+        Room
+      </div>
+    </div>
+    <div class="hud-bar">
+      <h2 style="font-weight: 100;"><i class="fas fa-volume-off"></i>&emsp;Song Title (add dynamically)</h2>
+      <div id="myProgress">
+        <div id="myBar"></div>
+      </div>
+      <div class="song-buttons">
+        <button onclick="move()"><i class="fas fa-backward fa-2x">&ensp;</i></button>
+        <button onclick="move()"><i class="fas fa-play fa-2x"></i>&ensp;</button>
+        <button onclick="move()"><i class="fas fa-forward fa-2x"></i></button>
+      </div>
+      <div class="active-listeners">
+        <h4 style="font-weight: 100;">(num) listeners in this room</h4>
+      </div>
+    </div>
+    <div class="queue">
+      <div class="bar">
+        <div class="content-title">
+          Queue
+        </div>
+      </div>
+      <li>this is a very long item to test line breaks in case things go south</li>
+      <li>item</li>
+      <li>item</li>
+      <li>item</li>
+    </div>
+  </body>
+</html>
