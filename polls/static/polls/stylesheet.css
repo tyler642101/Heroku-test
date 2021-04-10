@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  font-family: "Roboto";
+  color: #ffffff;
+}
+
+body {
+  background: #25262a;
+  overflow-x: hidden;
+}
+
+.page_title {
+  font-size: 50px;
+  color: #ffffff;
+}
+
+.nav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #141414;
+  opacity: 0.9;
+  overflow: hidden;
+  white-space: hidden;
+  padding-top: 60px;
+  transition: 0.7s;
+}
+
+.nav li {
+  display: block;
+  padding: 20px 30px;
+  font-size: 20px;
+}
+
+.nav li, a:hover {
+  color: #B6B0B0;
+  transition: 0.4s;
+}
+
+.nav .close {
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  margin-left: 30px;
+  font-size: 30px;
+}
+
+.nav .close i:hover {
+  color: #B6B0B0;
+  transition: 0.4s;
+}
+
+.slide a {
+  display: block;
+  font-size: 22px;
+  padding-left: 20px;
+}
+
+.slide i:hover {
+  color: #B6B0B0;
+  transition: 0.4s;
+}
+
+.media {
+  position: fixed;
+  top: 2%;
+  right: 2%;
+}
+
+.media li {
+  display: inline-block;
+  font-size: 22px;
+  padding-left: 20px;
+}
+
+.media i:hover {
+  color: #B6B0B0;
+  transition: 0.4s;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10%;
+  margin-left: 10%;
+}
+
+.queue {
+  background-color: #ffffff;
+  height: 600px;
+  width: 400px;
+  overflow: auto;
+  margin-top: 2%;
+  margin-left: 10%;
+  margin-right: 60%;
+  word-wrap: break-word;
+}
+
+.queue li {
+  display: block;
+  max-width: 100%;
+  font-size: 20px;
+  align-content: center;
+  margin-left: 4%;
+  color: black;
+}
+
+.bar {
+  transition: margin-left 0.7s;
+  overflow: hidden;
+  width: 100%;
+  height: 30px;
+  background-color: #17181A;
+}
+
+.room-title {
+  position: fixed;
+  font-size: 40px;
+  top: 2%;
+  left: 46%;
+}
+
+.content-title {
+  margin-left: 3%;
+  margin-top: 1%;
+  font-size: 20px;
+}
+
+.hud-bar {
+  margin-left: 10%;
+  margin-top: 7%;
+  font-size: 30px;
+  color: white;
+}
+
+.hud-bar i:hover {
+  color: #B6B0B0;
+  transition: 0.4s;
+}
+
+.hud-bar button {
+  background-color: inherit;
+  border: 0;
+  box-shadow: none;
+  background: none;
+}
+
+.song-buttons {
+  margin-left: 40%;
+}
+
+.active-listeners {
+  margin-left: 33%;
+}
+
+#myProgress {
+  width: 80%;
+  background-color: #ddd;
+}
+
+#myBar {
+  width: 1%;
+  height: 30px;
+  background-color: #4CAF50;
+}
+
+#content {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 20px;
+  transition: margin-left 0.7s;
+  overflow: hidden;
+  width: 100%;
+  height: 85px;
+  background-color: #17181A;
+}

@@ -4,8 +4,10 @@
   <head>
     <meta charset="utf-8">
     <title>Room</title>
+    {% load static %}
     <script src="https://kit.fontawesome.com/72ae810c7a.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="stylesheet.css">
+    <!-- <link rel="stylesheet" href="stylesheet.css"> -->
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/stylesheet.css' %}">
     <script>
       function openSlideMenu() {
         document.getElementById('menu').style.width='250px';
