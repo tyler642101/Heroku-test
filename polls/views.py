@@ -11,7 +11,7 @@ def index(request):
     context = {
         'latest_question_list': latest_question_list,
     }
-    return render(request, 'polls/index.html', context)
+    return render(request, 'polls/room.html', context)
 
 def detail(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
