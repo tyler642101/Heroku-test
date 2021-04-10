@@ -11,7 +11,7 @@ def index(request):
     context = {
         'latest_question_list': latest_question_list,
     }
-    return render(request, 'polls/room.html', context)
+    return render(request, 'polls/index.html', context)
 
 def detail(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
@@ -23,3 +23,6 @@ def results(request, question_id):
 
 def vote(request, question_id):
     return HttpResponse("You're voting on question %s." % question_id)
+
+def room(request):
+    return render(request, 'polls/room.html')
