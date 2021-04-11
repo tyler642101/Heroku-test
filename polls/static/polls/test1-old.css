@@ -96,7 +96,7 @@ body {
 
 .queue {
   background-color: #ddd;
-  height: 450px;
+  height: 600px;
   width: 400px;
   overflow: auto;
   margin-top: 0%;
@@ -219,8 +219,8 @@ body {
 }
 
 #myBar {
-  width: 0px;
-  height: 10px;
+  width: 0%;
+  height: 20px;
   background-color: #4CAF50;
 }
 
