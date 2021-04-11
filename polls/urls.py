@@ -13,5 +13,7 @@ urlpatterns = [
     # ex: /polls/5/vote/
     path('<int:question_id>/vote/', views.vote, name='vote'),
     # ex: /polls/room
-    path('room/', views.room, name='room')
+    path('room/', views.room, name='room'),
+    # ex: /polls/youtube
+    path('youtube/', views.youtube, name='youtube'),
 ]
