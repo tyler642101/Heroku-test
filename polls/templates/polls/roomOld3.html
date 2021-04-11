@@ -51,44 +51,22 @@
         }
       }
 
-      var player;
-
-      // this function gets called when API is ready to use
-      function onYouTubePlayerAPIReady() {
-          // create the global player from the specific iframe (#video)
-          player = new YT.Player('video', {
-              events: {
-                  // call this function when player is ready to use
-                  'onReady': onPlayerReady
-              }
-          });
+      function callPlayer(frame_id, func, args) {
+        if (window.jQuery && frame_id instanceof jQuery) frame_id = frame_id.get(0).id;
+        var iframe = document.getElementById(frame_id);
+        if (iframe && iframe.tagName.toUpperCase() != 'IFRAME') {
+            iframe = iframe.getElementsByTagName('iframe')[0];
+        }
+        if (iframe) {
+            // Frame exists,
+            iframe.contentWindow.postMessage(JSON.stringify({
+                "event": "command",
+                "func": func,
+                "args": args || [],
+                "id": frame_id
+            }), "*");
+        }
       }
-
-      function onPlayerReady(event) {
-
-          // bind events
-          var playButton = document.getElementById("play-button");
-          playButton.addEventListener("click", function() {
-              player.playVideo();
-          });
-
-          var pauseButton = document.getElementById("pause-button");
-          pauseButton.addEventListener("click", function() {
-              player.pauseVideo();
-          });
-
-          var stopButton = document.getElementById("stop-button");
-          stopButton.addEventListener("click", function() {
-              player.stopVideo();
-          });
-
-      }
-
-      // Inject YouTube API script
-      var tag = document.createElement('script');
-      tag.src = "https://www.youtube.com/player_api";
-      var firstScriptTag = document.getElementsByTagName('script')[0];
-      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
     </script>
   </head>
   <body>
@@ -118,20 +96,14 @@
           <div id="myBar"></div>
         </div>
         <div class="song-buttons">
-          <button id="play-button" onclick="move(362)"><i class="fas fa-play fa-2x"></i></button>
-          <button id="pause-button"><i class="fas fa-pause fa-2x"></i></button>
-          <button id="stop-button"><i class="fas fa-stop fa-2x"></i></button>
+          <button onclick="move(10)"><i class="fas fa-play fa-2x"></i>&ensp;</button>
+          <button onclick="pause()"><i class="fas fa-pause fa-2x"></i></button>
+          <!-- <a href="javascript:void callPlayer(&quot;whateverID&quot;,&quot;playVideo&quot;)"><i class="fas fa-play"></i></a>
+          <a href="javascript:void callPlayer(&quot;whateverID&quot;,&quot;pauseVideo&quot;)"><i class="fas fa-pause"></i></a>
+          <div id="whateverID">
+            <iframe width="0" height="0" frameborder="0" title="YouTube video player" type="text/html" src="http://www.youtube.com/embed/u1zgFlCw8Aw?enablejsapi=1"></iframe>
+          </div> -->
         </div>
-
-        <!-- <div class="buttons">
-      		<button class="button" id="play-button">PLAY</button>
-      		<button class="button" id="pause-button">PAUSE</button>
-      		<button class="button" id="stop-button">STOP</button>
-      	</div> -->
-        <!-- <div class="song-buttons">
-          <button id="play-button"><i class="fas fa-play fa-2x"></i></button>
-          <button id="pause-button"><i class="fas fa-pause fa-2x"></i></button>
-        </div> -->
         <div class="active-listeners">
           <h4 style="font-weight: 100;">(num) listeners in this room</h4>
         </div>
@@ -174,8 +146,6 @@
             <li><i class="fas fa-check"></i>&ensp;<i class="fas fa-times"></i>&ensp;item</li>
             <li><i class="fas fa-check"></i>&ensp;<i class="fas fa-times"></i>&ensp;item</li>
           </div>
-        </br>
-          <iframe id="video" src="https://www.youtube.com/embed/{{youtubeKey}}?enablejsapi=1&html5=1" frameborder="0" allowfullscreen></iframe>
         </div>
       </div>
     </div>

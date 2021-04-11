@@ -213,16 +213,6 @@ body {
   transition: 0.4s;
 }
 
-iframe {
-	margin: 0 auto;
-	width: 560px;
-	height: 315px;
-	float: left;
-	clear: both;
-	display: block;
-	background-color: #eee;
-}
-
 #myProgress {
   width: 80%;
   background-color: #ddd;

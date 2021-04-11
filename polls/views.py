@@ -32,7 +32,7 @@ def youtube(request):
     URL = "https://www.googleapis.com/youtube/v3/search"
     key = "AIzaSyBtQEH431JmblFH_MAJpLC9AoyGCCOYC54"
     param1 = "snippet"
-    param2 = "cats"
+    param2 = "dogs"
     param3 = "1"
     # param4 = "relavance"
     param5 = "video"
@@ -43,5 +43,6 @@ def youtube(request):
     data = r.json()
     
     for record in data['items']:
-        list1 = record['id']['videoId']
-    return HttpResponse(list1)
+        youtubeKey = record['id']['videoId']
+    # return HttpResponse(youtubeKey)
+    return render(request, 'polls/room.html', {'youtubeKey': youtubeKey})
