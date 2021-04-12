@@ -32,12 +32,12 @@ def youtube(request):
     URL = "https://www.googleapis.com/youtube/v3/search"
     key = "AIzaSyBtQEH431JmblFH_MAJpLC9AoyGCCOYC54"
     param1 = "snippet"
-    param2 = "drake"
+    param2 = "drake forever"
     param3 = "1"
     # param4 = "relavance"
     param5 = "video"
     param6 = "true"
-    PARAMS = {'key':key, 'part':param1, 'q':param2, 'maxResults':param3, 'type':param5, 'videoEmbeddable':param6}
+    PARAMS = {'key':key, 'part':param1, 'q':param2, 'maxResults':param3, 'type':param5, 'videoEmbeddable':param6, 'videoSyndicated':'true'}
     # 'order':param4,
     r = requests.get(url=URL, params=PARAMS)
     data = r.json()
