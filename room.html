@@ -4,23 +4,12 @@
   <head>
     <meta charset="utf-8">
     <title>Room</title>
-    {% load static %}
     <script src="https://kit.fontawesome.com/72ae810c7a.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="{% static 'polls/test1.css' %}">
-    /*
+    <link rel="stylesheet" href="stylesheet.css">
     <script>
-
       function openSlideMenu() {
         document.getElementById('menu').style.width='250px';
         document.getElementById('content').style.marginLeft='250px';
-        /*
-        var newVideo = document.createElement("iframe");
-        newVideo.setAttribute("src", "https://www.youtube.com/embed/XyNlqQId-nk");
-        var ul = document.getElementById("dynamic-list");
-        var li = document.createElement("li");
-        li.appendChild(newVideo);
-        ul.appendChild(li);
-        */
       }
       function closeSlideMenu() {
         document.getElementById('menu').style.width='0px';
@@ -31,24 +20,23 @@
       }
 
       var i = 0;
-      function move() {
+      function move(duration) {
         if (i == 0) {
           i = 1;
-          var duration = player.getDuration();
           var elem = document.getElementById("myBar");
           var width = 1 / duration;
+          var hold = width;
           var id = setInterval(frame, 10);
           function frame() {
-            var current_time = player.getCurrentTime()
-            if (current_time == duration) {
+            if (hold >= 100) {
               clearInterval(id);
               i = 0;
-              //var smurf = '{{video_list.0.remove}}';
             }
             else {
-              elem.style.width = (player.getCurrentTime()/duration)*100 + "%";
+              hold += width;
+              elem.style.width = hold + "%";
+              return hold;
             }
-
           }
         }
       }
@@ -58,8 +46,7 @@
         var id = setInterval(frame, 10);
         var hold = 0;
         function frame() {
-          //elem.style.width = (player.playerInfo.currentTime()/player.getDuration())*100 + "%";
-          elem.style.width = (player.getCurrentTime()/duration)*100 + "%";
+          elem.style.width = hold + "%";
         }
       }
 
@@ -100,7 +87,7 @@
       var tag = document.createElement('script');
       tag.src = "https://www.youtube.com/player_api";
       var firstScriptTag = document.getElementsByTagName('script')[0];
-      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag); 
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
     </script>
   </head>
   <body>
@@ -130,11 +117,9 @@
           <div id="myBar"></div>
         </div>
         <div class="song-buttons">
-          <button id="play-button" onclick="move()"><i class="fas fa-play fa-2x"></i></button>
-          <button id="pause-button" onclick = "pause()"><i class="fas fa-pause fa-2x"></i></button>
+          <button id="play-button" onclick="move(362)"><i class="fas fa-play fa-2x"></i></button>
+          <button id="pause-button"><i class="fas fa-pause fa-2x"></i></button>
           <button id="stop-button"><i class="fas fa-stop fa-2x"></i></button>
-          <ul id="dynamic-list">
-          </ul>
         </div>
 
         <!-- <div class="buttons">
@@ -172,42 +157,24 @@
               Recommend song
             </div>
           </div>
-          <form class = "rec-song" action = "submit" method="post">
-            {% csrf_token %}
-            <input type = "text" name = "recommend" value = ""></input>
-            {% comment %} <button onclick= "recommend" name = "search" type = "button" value = "Send Request">Search</button>  {% endcomment %}
-            <input type="submit" value="submit">
-          </form>
+          <div class="song-list" style="height: 25px;">
+            <div class="bar">
+            </div>
+            <li>This song is dope</li>
+          </div>
           <div class="bar-right">
             <div class="content-title">
               Vote
             </div>
           </div>
-          <div class="song-list" id="vote" style="height: 300px"></div>
-          <script>
-            
-              var vote_arr = JSON.parse("{{vote_list|escapejs}}");
-              var cont = document.getElementById('vote');
-              // create ul element and set the attributes.
-              var ul = document.createElement('ul');
-              ul.setAttribute('style', 'padding: 0; margin: 0;');
-              ul.setAttribute('id', 'theList');
-              
-              for (i = 0; i < vote_arr.length; i++) {
-                  //var vote_list = ["asdf", "fsaff" , "pp"];
-                  var li = document.createElement('li');     // create li element.
-                  li.innerHTML = '<i class="fas fa-check"></i>&ensp;<i class="fas fa-times"></i>&ensp;' + vote_arr[i];      // assigning text to li using array value.
-                  li.setAttribute('style', 'display: block;');    // remove the bullets.
-                  ul.appendChild(li);     // append li to ul.
-              }
-              
-              cont.appendChild(ul);       // add list to the container.
-              
-          </script>
+          <div class="song-list" style="height: 300px">
+            <li><i class="fas fa-check"></i>&ensp;<i class="fas fa-times"></i>&ensp;item</li>
+            <li><i class="fas fa-check"></i>&ensp;<i class="fas fa-times"></i>&ensp;item</li>
+            <li><i class="fas fa-check"></i>&ensp;<i class="fas fa-times"></i>&ensp;item</li>
+            <li><i class="fas fa-check"></i>&ensp;<i class="fas fa-times"></i>&ensp;item</li>
           </div>
         </br>
-          <!-- <iframe width="894" height="503" src="https://www.youtube.com/embed/{{youtubeKey}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
-          <iframe id="video" width="190" height="10" src="https://www.youtube.com/embed/{{youtubeKey}}?enablejsapi=1&html5=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe id="video" src="https://www.youtube.com/embed/hY7m5jjJ9mM?enablejsapi=1&html5=1" frameborder="0" allowfullscreen></iframe>
         </div>
       </div>
     </div>

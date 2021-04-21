@@ -23,12 +23,3 @@ class Choice(models.Model):
 
     def __str__(self):
         return self.choice_text
-
-class Song(models.Model):
-    title = models.CharField(max_length = 200)
-    key = models.CharField(max_length = 50)
-
-    def __str__(self):
-        return self.title
-    def video_key(self):
-        return self.key

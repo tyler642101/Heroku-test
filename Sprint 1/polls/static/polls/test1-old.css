@@ -96,7 +96,7 @@ body {
 
 .queue {
   background-color: #ddd;
-  height: 450px;
+  height: 600px;
   width: 400px;
   overflow: auto;
   margin-top: 0%;
@@ -121,12 +121,6 @@ body {
   height: 300px;
 }
 
-.song-search{
-  float: left;
-  width: 50%;
-  padding: 10px;
-  height: 30px;
-}
 .row:after {
   content: "";
   display: table;
@@ -193,47 +187,12 @@ body {
   margin-left: 33%;
 }
 
-.recommend{
-  border: 10px;
-  background-color: #ddd;
-  color: black;
-  width: 100px;
-  height: 30 px;
-}
-
 .song-list {
   width: 400px;
   background-color: #ddd;
   margin-top: 0%;
   margin-left: 22%;
   overflow: auto;
-}
-
-.rec-song {
-  width: 400px;
-  background-color: #ddd;
-  height: 30px;
-  margin-top: 0%;
-  margin-left: 22%;
-  overflow: hidden;
-}
-
-.rec-song input {
-  height: 100%;
-  float: left;
-  width: 70%;
-  color: black;
-  background: #ddd;
-  outline: none;
-}
-
-.rec-song button {
-  height: 100%;
-  width: 30%;
-  float: right;
-  color: black;
-  background-color: #aaa;
-  outline:none;
 }
 
 .song-list li {
@@ -254,25 +213,15 @@ body {
   transition: 0.4s;
 }
 
-iframe {
-	margin: 0 auto;
-	width: 500px;
-	height: 300px;
-	float: left;
-	clear: both;
-	display: block;
-	background-color: #eee;
-}
-
 #myProgress {
   width: 80%;
   background-color: #ddd;
 }
 
 #myBar {
-  width: 0px;
-  height: 10px;
-  background-color: #4caf50;
+  width: 0%;
+  height: 20px;
+  background-color: #4CAF50;
 }
 
 #content {
